@@ -1,0 +1,13 @@
+machine:
+  python:
+    version: 2.7.5
+    
+test:
+  override:
+    - grep html index.html
+    - python stricthtml.py
+    - echo foo > validate.json
+
+general:
+  artifacts:
+    - "validate.json" # a single file, relative to the build directory
