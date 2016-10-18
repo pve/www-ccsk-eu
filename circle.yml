@@ -1,11 +1,10 @@
 machine:
   python:
-    version: 2.7.5
+    version: >=2.7.5
     
 test:
   override:
     - grep html index.html
-    - python stricthtml.py
     - echo foo > validate.json
 
 general:
