@@ -10,3 +10,10 @@ test:
 general:
   artifacts:
     - "validate.json" # a single file, relative to the build directory
+    
+deployment:
+  prod:
+    branch: master
+    commands:
+      - aws s3 sync site  s3://www.clubcloudcomputing.com/ccsk.eu/ --delete
+# should invalidate cache at cloudfront at this time.
