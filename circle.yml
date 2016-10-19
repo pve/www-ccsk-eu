@@ -4,8 +4,8 @@ machine:
     
 test:
   override:
-    - grep html index.html
-    - echo foo > validate.json
+    - grep html site/index.html >validate.json
+    - echo foo >> validate.json
 
 general:
   artifacts:
