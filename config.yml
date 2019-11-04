@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+     docker:
+       - image: circleci/python:latest
+     steps:
+     - checkout # from github
+     - run:
+          command: |
+            set -e
+            mkdir results
+     - store_artifacts:
+         path: results 
+     - run: sudo pip install awscli --upgrade; whereis awscli; whereis aws
+     - run:
+          name: Deploy to S3 if tests pass and branch is Master
+          command: aws s3 sync site  s3://www.clubcloudcomputing.com/ccsk.eu/ --delete --acl public-read
